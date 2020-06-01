@@ -1,0 +1,6 @@
+cliente_udp: ClienteUDP.cpp SocketDatagrama.o PaqueteDatagrama.o
+	g++ ClienteUDP.cpp SocketDatagrama.o PaqueteDatagrama.o -o cliente_udp
+SocketDatagrama.o: SocketDatagrama.cpp SocketDatagrama.h
+	g++ SocketDatagrama.cpp -c
+PaqueteDatagrama.o: PaqueteDatagrama.cpp PaqueteDatagrama.h
+	g++ PaqueteDatagrama.cpp -c
