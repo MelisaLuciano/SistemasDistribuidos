@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>Ukranio Fest </title>
+		<script src="jquery.min.js"></script>
+	</head>
+	<body style="font-family:arial;">
+	<body background="f.jpg">
+		<div style="text-align:center">
+			<h1>Ukranio Fest</h1>
+			<form method=get id="form-search" class="block">
+				<h2>Introduzca los archivos</h2>
+				<input type="text1" id="search1" name="search"><br><br>
+				<input type="text2" id="search2" name="search"><br><br>
+				<button>Enviar a Mongoose</button>
+			</form>
+			<div class="block" id="search-res"></div>
+		</div>
+	</body>
+</html>
+
+<script>
+	$("#search-res").hide();
+	$('#form-search').submit(function(){
+		$("#search-res").show();
+		$("#search-res").html("<img src='load.gif' width=50/>");
+		$.ajax({
+			type: "POST",
+			url: "/search",
+			data:{
+				query1:$("#search").val()
+				query2:$("#search").val()
+			},
+			success: function(data){
+				$("#search-res").html(data);
+			}
+		});
+		return false;
+	});
+</script>
+
+<style>
+	h1{
+		color:#F4F2F2;
+	}
+	body{
+		background-color:#2670BF;
+	}
+	.block{
+		background-color:#D63108;
+		padding:20px;
+		margin-left:25%;
+		margin-right:25%;
+		border-radius:10px;
+	}
+	button{
+		background-color:#F4F2F2;
+		border:0;
+		padding:10px;
+		border-radius:10px;
+		color:#D63108;
+	}
+	#search{
+		height:40px;
+		font-size:20px;
+		width:300px;
+		border-radius:10px;
+	}
+</style>
